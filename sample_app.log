@@ -1,0 +1,82 @@
+[2025-01-15 08:00:00] INFO Inicio del sistema
+[2025-01-15 08:00:05] INFO Cargando configuración
+[2025-01-15 08:00:12] INFO Configuración cargada correctamente
+[2025-01-15 08:01:00] INFO Inicializando módulo de autenticación
+[2025-01-15 08:01:08] WARNING Archivo de caché no encontrado, se regenerará
+[2025-01-15 08:01:20] INFO Servicio de autenticación operativo
+[2025-01-15 08:02:03] INFO Conectando con base de datos principal
+[2025-01-15 08:02:07] ERROR Error de conexión a BD
+[2025-01-15 08:02:20] WARNING Reintentando conexión con base de datos
+[2025-01-15 08:02:31] INFO Conexión restaurada
+[2025-01-15 08:03:00] INFO Programando tarea de sincronización
+[2025-01-15 08:05:14] INFO Usuario admin ha iniciado sesión
+[2025-01-15 08:05:20] INFO Consulta de clientes ejecutada
+[2025-01-15 08:06:02] WARNING Tiempo de respuesta elevado en /api/clientes
+[2025-01-15 08:06:50] INFO Respuesta enviada al cliente
+[2025-01-15 08:10:11] INFO Generando informe diario
+[2025-01-15 08:10:35] ERROR No se pudo escribir el fichero de informe
+[2025-01-15 08:10:50] WARNING Espacio en disco por debajo del 15%
+[2025-01-15 08:11:12] INFO Liberando archivos temporales
+[2025-01-15 08:11:50] INFO Espacio temporal recuperado
+[2025-01-15 08:20:00] INFO Servicio de correo iniciado
+[2025-01-15 08:20:17] WARNING Servidor SMTP lento en la respuesta
+[2025-01-15 08:20:40] INFO Cola de correos procesada
+[2025-01-15 09:00:00] INFO Comenzando copia de seguridad
+[2025-01-15 09:00:55] ERROR Fallo en copia de seguridad incremental
+[2025-01-15 09:01:10] WARNING Se intentará una copia completa
+[2025-01-15 09:05:05] INFO Copia completa finalizada
+[2025-01-15 09:10:33] INFO Cierre correcto del proceso de backup
+[2025-01-16 07:59:58] INFO Inicio del sistema
+[2025-01-16 08:00:04] INFO Cargando configuración
+[2025-01-16 08:00:09] INFO Configuración cargada correctamente
+[2025-01-16 08:01:02] INFO Inicializando módulo de autenticación
+[2025-01-16 08:01:16] INFO Servicio de autenticación operativo
+[2025-01-16 08:02:00] INFO Conectando con base de datos principal
+[2025-01-16 08:02:05] INFO Conexión con base de datos establecida
+[2025-01-16 08:03:14] INFO Usuario mlopez ha iniciado sesión
+[2025-01-16 08:03:20] INFO Consulta de pedidos ejecutada
+[2025-01-16 08:03:44] WARNING Tiempo de respuesta elevado en /api/pedidos
+[2025-01-16 08:04:12] INFO Respuesta enviada al cliente
+[2025-01-16 08:05:01] INFO Usuario acosta ha iniciado sesión
+[2025-01-16 08:05:18] ERROR Token JWT inválido
+[2025-01-16 08:05:30] WARNING Se ha solicitado nueva autenticación
+[2025-01-16 08:05:48] INFO Usuario acosta autenticado correctamente
+[2025-01-16 08:07:00] INFO Lanzando tarea de limpieza
+[2025-01-16 08:07:25] INFO Limpieza completada
+[2025-01-16 08:12:42] WARNING Se detectó latencia en la red interna
+[2025-01-16 08:13:10] INFO Latencia normalizada
+[2025-01-16 08:20:00] INFO Servicio de correo iniciado
+[2025-01-16 08:20:30] INFO Cola de correos procesada
+[2025-01-16 08:30:00] INFO Comenzando copia de seguridad
+[2025-01-16 08:30:49] INFO Copia incremental finalizada
+[2025-01-16 08:31:00] INFO Verificación de integridad completada
+[2025-01-16 09:00:00] INFO Rotación de logs iniciada
+[2025-01-16 09:00:21] ERROR No se pudo renombrar el fichero de log activo
+[2025-01-16 09:00:40] WARNING Reintentando rotación de logs
+[2025-01-16 09:01:00] INFO Rotación de logs completada
+[2025-01-17 07:59:50] INFO Inicio del sistema
+[2025-01-17 08:00:03] INFO Cargando configuración
+[2025-01-17 08:00:09] INFO Configuración cargada correctamente
+[2025-01-17 08:01:00] INFO Inicializando módulo de autenticación
+[2025-01-17 08:01:13] INFO Servicio de autenticación operativo
+[2025-01-17 08:02:00] INFO Conectando con base de datos principal
+[2025-01-17 08:02:04] INFO Conexión con base de datos establecida
+[2025-01-17 08:03:10] INFO Usuario jperez ha iniciado sesión
+[2025-01-17 08:03:44] INFO Consulta de facturas ejecutada
+[2025-01-17 08:04:21] WARNING Respuesta parcial del servicio externo de facturación
+[2025-01-17 08:05:02] ERROR Timeout al invocar servicio externo de facturación
+[2025-01-17 08:05:30] WARNING Reintentando llamada al servicio externo
+[2025-01-17 08:05:58] INFO Servicio externo respondió correctamente
+[2025-01-17 08:10:00] INFO Generando informe semanal
+[2025-01-17 08:10:35] INFO Informe semanal generado correctamente
+[2025-01-17 08:12:00] WARNING Uso de memoria por encima del 80%
+[2025-01-17 08:12:45] INFO Recolección de basura forzada ejecutada
+[2025-01-17 08:13:10] INFO Uso de memoria normalizado
+[2025-01-17 08:20:00] INFO Servicio de correo iniciado
+[2025-01-17 08:20:14] ERROR No se pudo conectar con servidor SMTP secundario
+[2025-01-17 08:20:30] WARNING Cambiando a servidor SMTP principal
+[2025-01-17 08:20:55] INFO Envío de correos reanudado
+[2025-01-17 08:30:00] INFO Comenzando copia de seguridad
+[2025-01-17 08:31:10] INFO Copia incremental finalizada
+[2025-01-17 08:32:00] INFO Verificación de integridad completada
+[2025-01-17 08:40:00] INFO Cierre correcto del sistema
