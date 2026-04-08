@@ -1,7 +1,9 @@
 package org.iesra
 import java.io.File
 
-class FileManager {
+class FileManager : Input{
+    override fun getData(){
 
+    }
 
 }

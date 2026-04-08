@@ -1,4 +1,4 @@
 package org.iesra
 
-class FileOutput : Presentation{
+class FileOutput : Output{
 }
