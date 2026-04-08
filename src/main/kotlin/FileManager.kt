@@ -1,9 +1,16 @@
 package org.iesra
 import java.io.File
 
-class FileManager : Input{
-    override fun getData(){
+class FileManager(private val fileName : String) : Input{
 
+    override fun getData() : List<String>{
+        val file = File(fileName)
+        return if (file.exists()) {
+            file.readLines()
+        } else {
+            println("Error: El archivo '$fileName' no se encuentra en el directorio de trabajo.")
+            emptyList()
+        }
     }
 
 }
