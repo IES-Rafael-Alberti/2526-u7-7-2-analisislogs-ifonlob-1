@@ -2,19 +2,19 @@ package org.iesra
 
 import java.time.LocalDateTime
 
-class TextGenerator(private val stats : LogStats = LogStats(), private val logs : List<LogEntry>, private val fileName : String, private val comienzo : LocalDateTime?, private val final : LocalDateTime?) {
-    fun generarEstadisticas(rango : String = calcularRango()) : String{
-        val estadisticas = buildString {
+class TextGenerator(private val stats : LogStats, private val logs : List<LogEntry>, private val nombreArchivo : String, private val comienzo : LocalDateTime?, private val final : LocalDateTime?) {
+    private fun construirBaseInforme() : String{
+        val informe = buildString {
             appendLine("INFORME DE LOGS")
             appendLine("===============")
-            appendLine("Fichero analizado: $fileName")
+            appendLine("Fichero analizado: $nombreArchivo")
             appendLine("Rango aplicado: ${calcularRango()}")
-            appendLine("Niveles incluidos: ${nivelesIncluidos()}")
+            appendLine("Niveles incluidos: ${nivelesIncluidos().joinToString(", ")}")
             appendLine()
             appendLine("Resumen:")
             appendLine("- Líneas procesadas: ${stats.lineasProcesadas(logs)}")
-            appendLine("- Líneas válidas: ${stats.lineasValidas(logs)}")
-            appendLine("- Líneas inválidas: ${stats.lineasInvalidas(logs)}")
+            appendLine("- Líneas válidas: ${stats.lineasValidas(logs).size}")
+            appendLine("- Líneas inválidas: ${stats.lineasInvalidas(logs).size}")
             appendLine()
             appendLine("Conteo por nivel:")
             appendLine("- INFO: ${stats.contadorInfo(logs)}")
@@ -25,37 +25,22 @@ class TextGenerator(private val stats : LogStats = LogStats(), private val logs 
             appendLine("- Primera entrada: ${stats.primeraFecha(logs)}")
             appendLine("- Primera entrada: ${stats.ultimaFecha(logs)}")
         }
-        return estadisticas
+        return informe
     }
 
-    fun generarReporte(rango : String = calcularRango()) : String{
-        val reporte = buildString {
-            appendLine("INFORME DE LOGS")
-            appendLine("===============")
-            appendLine("Fichero analizado: $fileName")
-            appendLine("Rango aplicado: ${calcularRango()}")
-            appendLine("Niveles incluidos: ${nivelesIncluidos()}")
+    fun generarEstadisticas() : String = construirBaseInforme()
+
+    fun generarReporte() : String{
+        val base = construirBaseInforme()
+        val complemento = buildString{
             appendLine()
-            appendLine("Resumen:")
-            appendLine("- Líneas procesadas: ${stats.lineasProcesadas(logs)}")
-            appendLine("- Líneas válidas: ${stats.lineasValidas(logs)}")
-            appendLine("- Líneas inválidas: ${stats.lineasInvalidas(logs)}")
-            appendLine()
-            appendLine("Conteo por nivel:")
-            appendLine("- INFO: ${stats.contadorInfo(logs)}")
-            appendLine("- WARNING: ${stats.contadorWarning(logs)}")
-            appendLine("- ERROR: ${stats.contadorError(logs)}")
-            appendLine()
-            appendLine("Periodo detectado:")
-            appendLine("- Primera entrada: ${stats.primeraFecha(logs)}")
-            appendLine("- Primera entrada: ${stats.ultimaFecha(logs)}")
-            appendLine()
-            appendLine("Entradas encontradas:")
+            appendLine("Líneas encontradas:")
+        }
+        val reporte = base + complemento
+        logs.forEach{log->
+             reporte + "$log\n"
         }
 
-        logs.forEach{log->
-            reporte + "$log\n"
-        }
 
         return reporte
     }
