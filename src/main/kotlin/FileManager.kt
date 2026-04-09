@@ -3,7 +3,7 @@ import java.io.File
 
 class FileManager(private val fileName : String) : Input{
 
-    override fun getData() : List<String>{
+    override fun obtenerDatos() : List<String>{
         val file = File(fileName)
         return if (file.exists()) {
             file.readLines()
@@ -12,5 +12,7 @@ class FileManager(private val fileName : String) : Input{
             emptyList()
         }
     }
+
+    fun
 
 }
