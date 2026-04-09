@@ -9,8 +9,4 @@ class LogStats {
     fun contadorError(logs : List<LogEntry>) = logs.count{linea -> linea.level == LogLevel.ERROR}
     fun primeraFecha(logs : List<LogEntry>) = logs.minBy {linea-> linea.timestamp}
     fun ultimaFecha(logs : List<LogEntry>) = logs.maxBy {linea-> linea.timestamp}
-
-
-
-
 }
