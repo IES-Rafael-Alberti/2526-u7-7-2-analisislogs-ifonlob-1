@@ -1,5 +1,5 @@
 package org.iesra
 
 class ConsoleOutput : Output {
-    overr
+    override fun escribirDatos(contenido: String) = println(contenido)
 }
