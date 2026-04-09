@@ -28,6 +28,37 @@ class TextGenerator(private val stats : LogStats = LogStats(), private val logs 
         return estadisticas
     }
 
+    fun generarReporte(rango : String = calcularRango()) : String{
+        val reporte = buildString {
+            appendLine("INFORME DE LOGS")
+            appendLine("===============")
+            appendLine("Fichero analizado: $fileName")
+            appendLine("Rango aplicado: ${calcularRango()}")
+            appendLine("Niveles incluidos: ${nivelesIncluidos()}")
+            appendLine()
+            appendLine("Resumen:")
+            appendLine("- Líneas procesadas: ${stats.lineasProcesadas(logs)}")
+            appendLine("- Líneas válidas: ${stats.lineasValidas(logs)}")
+            appendLine("- Líneas inválidas: ${stats.lineasInvalidas(logs)}")
+            appendLine()
+            appendLine("Conteo por nivel:")
+            appendLine("- INFO: ${stats.contadorInfo(logs)}")
+            appendLine("- WARNING: ${stats.contadorWarning(logs)}")
+            appendLine("- ERROR: ${stats.contadorError(logs)}")
+            appendLine()
+            appendLine("Periodo detectado:")
+            appendLine("- Primera entrada: ${stats.primeraFecha(logs)}")
+            appendLine("- Primera entrada: ${stats.ultimaFecha(logs)}")
+            appendLine()
+            appendLine("Entradas encontradas:")
+        }
+
+        logs.forEach{log->
+            reporte + "$log\n"
+        }
+
+        return reporte
+    }
     fun calcularRango() : String{
         return if(comienzo == null){
             "$final y anteriores"
