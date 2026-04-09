@@ -1,5 +1,5 @@
 package org.iesra
 
 interface Output {
-    fun escribirDatos()
+    fun escribirDatos(contenido : String)
 }
