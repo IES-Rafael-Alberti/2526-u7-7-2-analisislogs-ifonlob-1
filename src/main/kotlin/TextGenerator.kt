@@ -23,7 +23,7 @@ class TextGenerator(private val stats : LogStats, private val logs : List<LogEnt
             appendLine()
             appendLine("Periodo detectado:")
             appendLine("- Primera entrada: ${stats.primeraFecha(logs)}")
-            appendLine("- Primera entrada: ${stats.ultimaFecha(logs)}")
+            appendLine("- Última entrada: ${stats.ultimaFecha(logs)}")
         }
         return informe
     }
