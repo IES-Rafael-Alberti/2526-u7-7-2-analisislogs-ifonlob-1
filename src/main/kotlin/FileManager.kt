@@ -2,7 +2,6 @@ package org.iesra
 import java.io.File
 
 class FileManager(private val fileName : String) : Input{
-
     override fun obtenerDatos() : List<String>{
         val file = File(fileName)
         return if (file.exists()) {
@@ -12,7 +11,4 @@ class FileManager(private val fileName : String) : Input{
             emptyList()
         }
     }
-
-    fun
-
 }
