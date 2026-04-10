@@ -14,9 +14,8 @@ class ValidadorLineaComandos : CliktCommand(name="logtool",help="Procesa fichero
     val to by option("-t", "--to", help = "Fecha final (YYYY-MM-DD HH:MM:SS)").convert { LocalDateTime.parse(it,formatoFecha)}
     val level by option("-l", "--level", help = "Niveles (INFO, WARNING, ERROR)").choice("INFO", "WARNING", "ERROR", ignoreCase = true).split(",")
     val statsOnly by option("-s", "--stats", help = "Muestra únicamente las estadísticas.").flag()
-    val report by option("-r", "--report", help = "Genera un informe completo (comportamiento por defecto).").flag(default = true)
     val ignoreInvalid by option("--ignore-invalid", help = "Ignora líneas mal formadas.").flag()
-    val outputFichero by option("-o", "--output", help = "Guarda la salida en un fichero.").file()
+    val outputFichero by option("-o", "--output", help = "Guarda la salida en un fichero.").file(mustExist = true, canBeDir = false)
     val outputConsola by option("-p", "--stdout", help = "Muestra la salida por consola.").flag()
 
     override fun run() {
@@ -25,10 +24,19 @@ class ValidadorLineaComandos : CliktCommand(name="logtool",help="Procesa fichero
             return
         }
 
+        val fileManager = FileManager(input)
 
+        val outputs : MutableList<Output> = mutableListOf()
+
+        outputFichero?.let { outputs.add(FileOutput(it)) }
+
+        if(outputConsola) outputs.add(ConsoleOutput())
 
         val procesador = LogProcessor()
+        outputs.forEach{
+            procesador.ejecutarProceso(fileManager.obtenerDatos(),input.name,from,to,statsOnly,it,level,ignoreInvalid)
+        }
 
-        procesador.ejecutarProceso()
+
     }
 }
