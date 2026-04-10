@@ -31,6 +31,8 @@ class LogFilter {
         }
     }
 
+    fun filtrarLineasValidad
+
 
 
 }
