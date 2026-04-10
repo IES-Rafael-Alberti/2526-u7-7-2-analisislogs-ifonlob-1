@@ -1,8 +1,12 @@
 package org.iesra
 
 import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class TextGenerator(private val stats : LogStats, private val logs : List<LogEntry>, private val nombreArchivo : String, private val comienzo : LocalDateTime?, private val final : LocalDateTime?) {
+
+    private val formatoFecha = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+
     private fun construirBaseInforme() : String{
         val informe = buildString {
             appendLine("INFORME DE LOGS")
@@ -22,8 +26,8 @@ class TextGenerator(private val stats : LogStats, private val logs : List<LogEnt
             appendLine("- ERROR: ${stats.contadorError(logs)}")
             appendLine()
             appendLine("Periodo detectado:")
-            appendLine("- Primera entrada: ${stats.primeraFecha(logs)}")
-            appendLine("- Última entrada: ${stats.ultimaFecha(logs)}")
+            appendLine("- Primera entrada: ${LocalDateTime.parse(stats.primeraFecha(logs).toString(),formatoFecha)}")
+            appendLine("- Última entrada: ${LocalDateTime.parse(stats.ultimaFecha(logs).toString(),formatoFecha)}")
         }
         return informe
     }
@@ -32,17 +36,17 @@ class TextGenerator(private val stats : LogStats, private val logs : List<LogEnt
 
     fun generarReporte() : String{
         val base = construirBaseInforme()
-        val complemento = buildString{
+        val titulo = buildString{
             appendLine()
             appendLine("Líneas encontradas:")
         }
-        val reporte = base + complemento
-        logs.forEach{log->
-             reporte + "$log\n"
+        val complemento = buildString{
+            logs.forEach{log->
+                appendLine(log)
+        }
         }
 
-
-        return reporte
+        return base + titulo + complemento
     }
     fun calcularRango() : String{
         return if(comienzo == null){
