@@ -1,9 +1,8 @@
 package org.iesra
 import java.io.File
 
-class FileOutput(private val ruta : String) : Output{
+class FileOutput(private val file : File) : Output{
     override fun escribirDatos(contenido: String) {
-        val file = File(ruta)
         try {
             file.writeText(contenido)
             println("Informe guardado con éxito en: ${file.absolutePath}")
