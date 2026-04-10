@@ -1,5 +1,4 @@
 package org.iesra
-import java.io.File
 import java.time.LocalDateTime
 
 class LogProcessor (private val parser : LogParser = LogParser(), private val filter : LogFilter = LogFilter(), private val stats : LogStats = LogStats()){
