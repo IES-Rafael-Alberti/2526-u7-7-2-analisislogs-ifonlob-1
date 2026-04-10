@@ -1,6 +1,5 @@
 package org.iesra
 import java.time.LocalDateTime
-import kotlin.collections.filter
 
 class LogFilter {
     fun filtrarPorFechas(logs : List<LogEntry>, comienzo : LocalDateTime?, final : LocalDateTime?) : List<LogEntry>{
