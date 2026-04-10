@@ -26,8 +26,8 @@ class TextGenerator(private val stats : LogStats, private val logs : List<LogEnt
             appendLine("- ERROR: ${stats.contadorError(logs)}")
             appendLine()
             appendLine("Periodo detectado:")
-            appendLine("- Primera entrada: ${LocalDateTime.parse(stats.primeraFecha(logs).toString(),formatoFecha)}")
-            appendLine("- Última entrada: ${LocalDateTime.parse(stats.ultimaFecha(logs).toString(),formatoFecha)}")
+            appendLine("- Primera entrada: ${stats.primeraFecha(logs)?.format(formatoFecha)}")
+            appendLine("- Última entrada: ${stats.ultimaFecha(logs)?.format(formatoFecha)}")
         }
         return informe
     }
