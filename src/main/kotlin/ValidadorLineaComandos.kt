@@ -16,7 +16,7 @@ class ValidadorLineaComandos : CliktCommand(name="logtool",help="Procesa fichero
     val report by option("-r", "--report", help = "Genera un informe completo (comportamiento por defecto).").flag(default = true)
     val statsOnly by option("-s", "--stats", help = "Muestra únicamente las estadísticas.").flag()
     val ignoreInvalid by option("--ignore-invalid", help = "Ignora líneas mal formadas.").flag()
-    val outputFichero by option("-o", "--output", help = "Guarda la salida en un fichero.").file(mustExist = true, canBeDir = false)
+    val outputFichero by option("-o", "--output", help = "Guarda la salida en un fichero.").file(mustExist = false, canBeDir = false)
     val outputConsola by option("-p", "--stdout", help = "Muestra la salida por consola.").flag()
 
     override fun run() {
