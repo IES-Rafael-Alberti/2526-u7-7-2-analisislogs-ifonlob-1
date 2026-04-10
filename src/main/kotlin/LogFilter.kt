@@ -1,8 +1,9 @@
 package org.iesra
 import java.time.LocalDateTime
+import kotlin.collections.filter
 
 class LogFilter {
-    fun filtrar(logs : List<LogEntry>, comienzo : LocalDateTime?, final : LocalDateTime?) : List<LogEntry>{
+    fun filtrarPorFechas(logs : List<LogEntry>, comienzo : LocalDateTime?, final : LocalDateTime?) : List<LogEntry>{
         return if (comienzo == null && final == null) {
             logs
         }
@@ -20,4 +21,16 @@ class LogFilter {
             logs.filter { it.timestamp?.let { timestamp-> !timestamp.isBefore(comienzo) && !timestamp.isAfter(final) } ?: false }
         }
     }
+
+    fun filtrarPorNiveles(logs : List<LogEntry>, levels : List<LogLevel>?) : List<LogEntry>{
+        return if(levels.isNullOrEmpty()){
+            logs
+        }
+        else{
+            logs.filter{it.level in levels}
+        }
+    }
+
+
+
 }
